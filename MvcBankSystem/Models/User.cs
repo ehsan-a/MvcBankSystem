@@ -4,12 +4,12 @@ namespace MvcBankSystem.Models
 {
     public class User
     {
-        public int Id { get; private set; }
-        public Branch? Branch { get; private set; }
-        public string? Username { get; private set; }
-        public string? Password { get; private set; }
-        public int AccountId { get; private set; }
-        public Account? Account { get; private set; }
-        public bool IsActive { get; private set; }
+        public int Id { get; set; }
+        public Branch? Branch { get; set; }
+        public string? Username { get; set; }
+        public string? Password { get; set; }
+        public int AccountId { get; set; }
+        public Account? Account { get; set; }
+        public bool IsActive { get; set; }
     }
 }
