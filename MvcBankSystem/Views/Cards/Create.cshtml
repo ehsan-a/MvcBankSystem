@@ -1,0 +1,62 @@
+﻿@model MvcBankSystem.Models.Card
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Card</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AccountId" class="control-label"></label>
+                <select asp-for="AccountId" class ="form-control" asp-items="ViewBag.AccountId"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="CardNumber" class="control-label"></label>
+                <input asp-for="CardNumber" class="form-control" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpDate" class="control-label"></label>
+                <input asp-for="ExpDate" class="form-control" />
+                <span asp-validation-for="ExpDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cvv2" class="control-label"></label>
+                <input asp-for="Cvv2" class="form-control" />
+                <span asp-validation-for="Cvv2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstPassword" class="control-label"></label>
+                <input asp-for="FirstPassword" class="form-control" />
+                <span asp-validation-for="FirstPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondPassword" class="control-label"></label>
+                <input asp-for="SecondPassword" class="form-control" />
+                <span asp-validation-for="SecondPassword" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

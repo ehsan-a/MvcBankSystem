@@ -3,14 +3,14 @@
     public class Branch
     {
         public int Id { get; set; }
-        public int ManagerUserId { get; private set; }
-        public User? ManagerUser { get; private set; }
-        public string? Title { get; private set; }
-        public string? Address { get; private set; }
-        public string? Phone { get; private set; }
-        public bool IsActive { get; private set; }
-        public List<Account> Accounts { get; private set; } = new();
-        public List<Customer> Customers { get; private set; } = new();
+        public int? ManagerUserId { get; set; }
+        public User? ManagerUser { get; set; }
+        public string? Title { get; set; }
+        public string? Address { get; set; }
+        public string? Phone { get; set; }
+        public bool IsActive { get; set; }
+        public List<Account> Accounts { get; set; } = new();
+        public List<Customer> Customers { get; set; } = new();
 
     }
 }

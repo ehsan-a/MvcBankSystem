@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MvcBankSystem.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MvcBankSystemContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MvcBankSystemContext") ?? throw new InvalidOperationException("Connection string 'MvcBankSystemContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

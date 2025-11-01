@@ -3,14 +3,14 @@
     public class Card
     {
         public int Id { get; set; }
-        public int AccountId { get; private set; }
-        public Account? Account { get; private set; }
-        public bool IsActive { get; private set; }
-        public string CardNumber { get; private set; }
-        public DateTime ExpDate { get; private set; }
-        public int Cvv2 { get; private set; }
-        public int FirstPassword { get; private set; }
-        public int SecondPassword { get; private set; }
+        public int AccountId { get; set; }
+        public Account? Account { get; set; }
+        public bool IsActive { get; set; }
+        public string CardNumber { get; set; }
+        public DateTime ExpDate { get; set; }
+        public int Cvv2 { get; set; }
+        public int FirstPassword { get; set; }
+        public int SecondPassword { get; set; }
         private static string s_nextCardNumber { get; set; } = "6037880000000000";
         public Card()
         {
