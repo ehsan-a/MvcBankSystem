@@ -22,7 +22,7 @@ namespace MvcBankSystem.Controllers
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-            var mvcBankSystemContext = _context.Account.Include(a => a.Customer);
+            var mvcBankSystemContext = _context.Account.Include(a => a.Customer).Include(b => b.DebitTransactions).Include(c => c.CreditTransactions);
             return View(await mvcBankSystemContext.ToListAsync());
         }
 
@@ -156,6 +156,15 @@ namespace MvcBankSystem.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Bill(int id)
+        {
+            var accounts = _context.Account.Include(a => a.DebitTransactions).Include(b => b.CreditTransactions);
+            var account = accounts.First(x => x.Id == id);
+            var transaction = account.CreditTransactions.Union(account.DebitTransactions).OrderBy(x => x.Date);
+            ViewData["AccountId"] = account.Id;
+            return View(transaction);
         }
 
         private bool AccountExists(int id)

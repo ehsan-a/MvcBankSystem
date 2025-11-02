@@ -31,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.OpeningDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClosingDate)
+                Balance
             </th>
             <th></th>
         </tr>
@@ -41,7 +41,9 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Customer.FirstName) @Html.DisplayFor(modelItem => item.Customer.LastName)
+                    <a asp-controller="Customers" asp-action="Details" asp-route-id="@item.CustomerId">
+                        @Html.DisplayFor(modelItem => item.Customer!.FirstName) @Html.DisplayFor(modelItem => item.Customer!.LastName)
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Number)
@@ -59,9 +61,10 @@
                     @Html.DisplayFor(modelItem => item.OpeningDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ClosingDate)
+                    @item.GetBalance()
                 </td>
                 <td>
+                    <a asp-action="Bill" asp-route-id="@item.Id">Bill</a> |
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>

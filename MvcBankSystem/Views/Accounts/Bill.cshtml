@@ -1,0 +1,82 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Transaction>
+@{
+    ViewData["Title"] = "Bill";
+}
+
+<h1>Bill</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Id
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Deposit
+            </th>
+            <th>
+                Withdraw
+            </th>
+            <th>
+                Balance
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            int counter = 1;
+            decimal balance = 0;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @counter
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        #
+                    </td>
+                    <td>
+                        #
+                    </td>
+                    <td>
+                        @(item.CreditorAccountId == (int)ViewData["AccountId"]! ? Html.DisplayFor(modelItem => item.Amount) : "0")
+
+                    </td>
+                    <td>
+                        @(item.DebtorAccountId == (int)ViewData["AccountId"]! ? Html.DisplayFor(modelItem => item.Amount) : "0")
+                    </td>
+                    <td>
+                        @{
+                            balance += (item.CreditorAccountId == (int)ViewData["AccountId"]! ? item.Amount : (0 - item.Amount));
+                        }
+                        @balance
+                    </td>
+                </tr>
+                counter++;
+            }
+        }
+    </tbody>
+</table>
+

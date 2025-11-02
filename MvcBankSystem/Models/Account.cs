@@ -27,5 +27,6 @@ namespace MvcBankSystem.Models
             Sheba = "IR808888" + Number.ToString().PadLeft(10, '0');
             OpeningDate = DateTime.Now;
         }
+        public decimal GetBalance() => (-DebitTransactions.Sum(x => x.Amount)) + CreditTransactions.Sum(x => x.Amount);
     }
 }
